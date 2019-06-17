@@ -1,0 +1,18 @@
+server:
+  port: 9001
+  
+spring:  application:    name: zuul
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/   # 设置Eureka服务器的URL
+      
+zuul:  routes:    user:                                          # 定义模块
+      service-id: user-provider                    # 用户模块服务的名称
+      path: /user/**                               # url中包含user的请求，可以访问服务名为user-provider的微服务
+    goods:
+      service-id: goods-provider                    # 用户模块服务的名称
+      path: /goods/**     orders:
+      service-id: orders-provider                    # 用户模块服务的名称
+      path: /orders/**                               
